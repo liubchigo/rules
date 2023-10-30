@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>AzureDevOps.Compliance.Rules</RootNamespace>
   </PropertyGroup>
 
@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AzureDevOps.RestService" Version="[1.0.0.806, 1.1)" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
-    <PackageReference Include="YamlDotNet" Version="8.0.0" />
+    <PackageReference Include="AzureDevOps.RestService" Version="1.0.0.806" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="YamlDotNet" Version="13.7.1" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -31,7 +31,7 @@
     <AssemblyName>AzureDevOps.Compliance.Rules</AssemblyName>
     <Description>Rules to check for compliance setup of Azure DevOps projects.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageTags>pipellines; build; release; azure devops; vsts; sox; compliance</PackageTags>
+    <PackageTags>pipellines; build; release; azure devops; compliance</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/azure-devops-compliance/rules/</RepositoryUrl>

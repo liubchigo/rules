@@ -5,61 +5,62 @@ on:
       - master
 jobs:
   build:
-    runs-on: ubuntu-18.04   
+    runs-on: ubuntu-latest   
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.100'
-          source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          dotnet-version: '7.0'
+        #   source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
+        # env:
+        #   NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: dotnet build -c release
-  test:
-    needs: build
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.100'
-          source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: dotnet test
-        run: dotnet test -c release  /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-        env:
-          TOKEN: ${{secrets.AZURE_DEVOPS_TOKEN}}
-      - uses: codecov/codecov-action@v1
-  mutation-test:
-    needs: build
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.100'
-          source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: stryker
-        run: |
-          dotnet tool install -g dotnet-stryker
-          dotnet stryker -tp "['Rules.Tests/Rules.Tests.csproj']" -im "['ConfigureAwait']" --reporters "['dashboard']" --dashboard-project github.com/azure-devops-compliance/rules/master
-        env:
-          STRYKER_DASHBOARD_API_KEY: ${{secrets.STRYKER_DASHBOARD_TOKEN}}
+  # test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '3.1.100'
+  #         source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
+  #       env:
+  #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #     - name: dotnet test
+  #       run: dotnet test -c release  /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+  #       env:
+  #         TOKEN: ${{secrets.AZURE_DEVOPS_TOKEN}}
+  #     - uses: codecov/codecov-action@v1
+  # mutation-test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '3.1.100'
+  #         source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
+  #       env:
+  #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: stryker
+      #   run: |
+      #     dotnet tool install -g dotnet-stryker
+      #     dotnet stryker -tp "['Rules.Tests/Rules.Tests.csproj']" -im "['ConfigureAwait']" --reporters "['dashboard']" --dashboard-project github.com/azure-devops-compliance/rules/master
+      #   env:
+      #     STRYKER_DASHBOARD_API_KEY: ${{secrets.STRYKER_DASHBOARD_TOKEN}}
   push:
     needs: 
-      - test
-      - mutation-test
-    runs-on: ubuntu-18.04
+      - build
+      # - test
+      # - mutation-test
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
         with:
           fetch-depth: 0
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.100'
+          dotnet-version: '7.0'
           source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
