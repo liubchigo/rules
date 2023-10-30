@@ -8,21 +8,23 @@ jobs:
     runs-on: ubuntu-latest   
     steps:
       - uses: actions/checkout@main
-      - uses: actions/setup-dotnet@v1
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0'
-        #   source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
-        # env:
-        #   NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build -c release
+          source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.PAT}}
+      - name: dotnet build
+        run: dotnet build -c release
+
   # test:
   #   needs: build
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@main
-  #     - uses: actions/setup-dotnet@v1
+  #     - uses: actions/setup-dotnet@v3
   #       with:
-  #         dotnet-version: '3.1.100'
+  #         dotnet-version: '7.0'
   #         source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
   #       env:
   #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -36,9 +38,9 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@main
-  #     - uses: actions/setup-dotnet@v1
+  #     - uses: actions/setup-dotnet@v3
   #       with:
-  #         dotnet-version: '3.1.100'
+  #         dotnet-version: '7.0'
   #         source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
   #       env:
   #         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -58,12 +60,12 @@ jobs:
       - uses: actions/checkout@main
         with:
           fetch-depth: 0
-      - uses: actions/setup-dotnet@v1
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0'
           source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.PAT}}
       - name: dotnet pack
         run: |
           export VERSION=$(git rev-list --count HEAD)

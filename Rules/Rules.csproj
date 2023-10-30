@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AzureDevOps.RestService" Version="1.0.0.806" />
+    <PackageReference Include="AzureDevOps.RestService" Version="1.0.0.816" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="YamlDotNet" Version="13.7.1" />
