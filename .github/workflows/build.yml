@@ -13,7 +13,7 @@ jobs:
           dotnet-version: '7.0'
           source-url: https://nuget.pkg.github.com/azure-devops-compliance/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PAT}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: dotnet build
         run: dotnet build -c release
 
