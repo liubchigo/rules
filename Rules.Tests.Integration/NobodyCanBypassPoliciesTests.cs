@@ -23,7 +23,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
         [Trait("category", "integration")]
         public async Task ReconcileIntegrationTest()
         {
-            var repositoryId = "3167b64e-c72b-4c55-84eb-986ac62d0dec";
+            var repositoryId = "88e64988-9e9e-41f2-a8b8-bfd25cae6688";
             var client = new VstsRestClient(_config.Organization, _config.Token);
             var projectId = (await client.GetAsync(Project.Properties(_config.Project))).Id;
 
@@ -49,7 +49,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
         [Trait("category", "integration")]
         public async Task ReconcileIntegrationTestForMasterBranchPermission()
         {
-            var repositoryId = "6435e3f0-15b7-4302-814d-4ab586e61f8b";
+            var repositoryId = "88e64988-9e9e-41f2-a8b8-bfd25cae6688";
             var client = new VstsRestClient(_config.Organization, _config.Token);
             var projectId = (await client.GetAsync(Project.Properties(_config.Project))).Id;
 

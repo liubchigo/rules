@@ -13,7 +13,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
     public class NobodyCanDeleteTheRepositoryTests : IClassFixture<TestConfig>
     {
         private readonly TestConfig _config;
-        private const string RepositoryId = "3167b64e-c72b-4c55-84eb-986ac62d0dec";
+        private const string RepositoryId = "88e64988-9e9e-41f2-a8b8-bfd25cae6688";
 
 
         public NobodyCanDeleteTheRepositoryTests(TestConfig config)

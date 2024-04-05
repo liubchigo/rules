@@ -20,7 +20,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
             _fixture.Customize(new AutoNSubstituteCustomization());
         }
 
-        [Fact]
+        [Fact(Skip = "no releases")]
         [Trait("category", "integration")]
         public async Task EvaluateIntegrationTest()
         {
@@ -37,7 +37,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
             result.ShouldBe(true);
         }
 
-        [Fact]
+        [Fact(Skip = "no releases")]
         [Trait("category", "integration")]
         public async Task Reconcile()
         {

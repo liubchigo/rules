@@ -19,7 +19,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
             _config = config;
         }
 
-        [Fact]
+        [Fact(Skip = "no releases")]
         [Trait("category", "integration")]
         public async Task ReconcileIntegrationTest()
         {

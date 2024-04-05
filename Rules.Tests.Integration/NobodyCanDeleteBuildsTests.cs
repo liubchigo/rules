@@ -26,7 +26,7 @@ namespace AzureDevOps.Compliance.Rules.Tests.Integration
         public async Task ReconcileIntegrationTest()
         {
             var project = await _client.GetAsync(Project.ProjectById(_config.Project));
-            var buildPipeline = await _client.GetAsync(Builds.BuildDefinition(project.Id, "2"))
+            var buildPipeline = await _client.GetAsync(Builds.BuildDefinition(project.Id, "203"))
                 .ConfigureAwait(false);
 
             await ManagePermissions
